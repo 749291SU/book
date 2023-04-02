@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans [
+        <!ELEMENT beans (bean*)>
+
+        <!ELEMENT bean (property*)>
+        <!ELEMENT property (#PCDATA)>
+
+        <!ATTLIST bean id ID #REQUIRED>
+        <!ATTLIST bean class CDATA #IMPLIED>
+
+        <!ATTLIST property name CDATA #IMPLIED>
+        <!ATTLIST property ref IDREF #IMPLIED>
+
+        ]>
+<beans>
+    <bean id="page" class="com.siwen.myssm.myspringmvc.PageController"></bean>
+    <bean id="userDao" class="com.siwen.book.dao.impl.UserDaoImpl"></bean>
+    <bean id="bookDao" class="com.siwen.book.dao.impl.BookDaoImpl"></bean>
+    <bean id="cartItemDao" class="com.siwen.book.dao.impl.CartItemDaoImpl"></bean>
+
+
+    <bean id="userService" class="com.siwen.book.services.impl.UserServiceImpl">
+        <property ref="userDao" name="userDao"></property>
+    </bean>
+
+    <bean id="bookService" class="com.siwen.book.services.impl.BookServiceImpl">
+        <property ref="bookDao" name="bookDao"></property>
+    </bean>
+
+    <bean id="cartItemService" class="com.siwen.book.services.impl.CartItemServiceImpl">
+        <property ref="cartItemDao" name="cartItemDao"></property>
+    </bean>
+
+
+    <bean id="user" class="com.siwen.book.controllers.UserController">
+        <property ref="userService" name="userService"></property>
+        <property ref="cartItemService" name="cartItemService"></property>
+    </bean>
+
+    <bean id="book" class="com.siwen.book.controllers.BookController">
+        <property ref="bookService" name="bookService"></property>
+    </bean>
+
+    <bean id="cart" class="com.siwen.book.controllers.CartController">
+        <property ref="cartItemService" name="cartItemService"></property>
+    </bean>
+</beans>
