@@ -16,6 +16,7 @@ import com.siwen.book.services.intf.UserService;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
+
     @Override
     public User getUser(String uname, String pwd) {
         return userDao.getUser(uname, pwd);

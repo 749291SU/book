@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>书城首页</title>
-    <link rel="stylesheet" href="./static/css/minireset.css"/>
-    <link rel="stylesheet" href="./static/css/common.css"/>
-    <link rel="stylesheet" href="./static/css/iconfont.css"/>
-    <link rel="stylesheet" href="./static/css/index.css"/>
-    <link rel="stylesheet" href="./static/css/swiper.min.css"/>
+    <link href="./static/css/minireset.css" rel="stylesheet"/>
+    <link href="./static/css/common.css" rel="stylesheet"/>
+    <link href="./static/css/iconfont.css" rel="stylesheet"/>
+    <link href="./static/css/index.css" rel="stylesheet"/>
+    <link href="./static/css/swiper.min.css" rel="stylesheet"/>
 
     <script th:src="@{/static/script/index.js}"></script>
 </head>
@@ -22,26 +22,26 @@
                 <i class="iconfont icon-ai-arrow-down"></i>
             </div>
             <div class="topbar-right" th:if="${session.curUser==null}">
-                <a href="user/login.html" class="login">登录</a>
-                <a href="user/regist.html" class="register">注册</a>
-                <a href="cart/cart.html" class="cart iconfont icon-gouwuche " > 购物车
+                <a class="login" href="user/login.html">登录</a>
+                <a class="register" href="user/regist.html">注册</a>
+                <a class="cart iconfont icon-gouwuche " href="cart/cart.html"> 购物车
                     <div class="cart-num">3</div>
                 </a>
-                <a href="manager/book_manager.html" class="admin">后台管理</a>
+                <a class="admin" href="manager/book_manager.html">后台管理</a>
             </div>
 
             <div class="topbar-right" th:unless="${session.curUser==null}">
                 <span>欢迎你<b th:text="${session.curUser.uname}"></b></span>
-                <a href="#" class="register">注销</a>
-                <a href="pages/cart/cart.jsp" class="cart iconfont icon-gouwuche "> 购物车
+                <a class="register" href="#">注销</a>
+                <a class="cart iconfont icon-gouwuche " href="pages/cart/cart.jsp"> 购物车
                     <div class="cart-num" th:text="${session.curUser.cart.getTotalCount()}"></div>
                 </a>
-                <a href="./pages/manager/book_manager.html" class="admin">后台管理</a>
+                <a class="admin" href="./pages/manager/book_manager.html">后台管理</a>
             </div>
         </div>
     </div>
     <div class="header w">
-        <a href="#" class="header-logo"></a>
+        <a class="header-logo" href="#"></a>
         <div class="header-nav">
             <ul>
                 <li><a href="#">java</a></li>
@@ -54,7 +54,7 @@
             </ul>
         </div>
         <div class="header-search">
-            <input type="text" placeholder="十万个为什么"/>
+            <input placeholder="十万个为什么" type="text"/>
             <button class="iconfont icon-search"></button>
         </div>
     </div>
@@ -109,15 +109,15 @@
             <div class="swiper-container">
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
-                        <img src="./static/uploads/banner4.jpg" alt="">
+                        <img alt="" src="./static/uploads/banner4.jpg">
                         <!-- <div class="banner-img"></div> -->
                     </li>
                     <li class="swiper-slide">
-                        <img src="./static/uploads/banner5.jpg" alt="">
+                        <img alt="" src="./static/uploads/banner5.jpg">
                         <!-- <div class="banner-img"></div> -->
                     </li>
                     <li class="swiper-slide">
-                        <img src="./static/uploads/banner6.jpg" alt="">
+                        <img alt="" src="./static/uploads/banner6.jpg">
                         <!-- <div class="banner-img"></div> -->
                     </li>
                 </ul>
@@ -145,9 +145,9 @@
                     </div>
                 </div>
                 <div class="list-content">
-                    <div class="list-item" th:unless="${#lists.isEmpty(session.bookList)}"
-                         th:each="book : ${session.bookList}" th:object="${book}">
-                        <img th:src="|./static/uploads/${book.bookImg}|" alt="">
+                    <div class="list-item" th:each="book : ${session.bookList}"
+                         th:object="${book}" th:unless="${#lists.isEmpty(session.bookList)}">
+                        <img alt="" th:src="|./static/uploads/${book.bookImg}|">
                         <p th:text="|书名:*{bookName}|"></p>
                         <p th:text="|作者:*{author}|"></p>
                         <p th:text="|价格:￥*{price}|"></pt>
@@ -179,34 +179,34 @@
     </div>
     <div class="cate w">
         <div class="list">
-            <a href="" class="list-item">
+            <a class="list-item" href="">
                 <i class="iconfont icon-java"></i>
                 <span>java</span>
             </a>
-            <a href="" class="list-item"
+            <a class="list-item" href=""
             ><i class="iconfont icon-h5"></i>h5</a
             >
-            <a href="" class="list-item">
+            <a class="list-item" href="">
                 <i class="iconfont icon-python"></i>python
             </a>
-            <a href="" class="list-item"
+            <a class="list-item" href=""
             ><i class="iconfont icon-tianchongxing-"></i>pm</a
             >
-            <a href="" class="list-item"
+            <a class="list-item" href=""
             ><i class="iconfont icon-php_elephant"></i>php</a
             >
-            <a href="" class="list-item"
+            <a class="list-item" href=""
             ><i class="iconfont icon-go"></i>go</a
             >
         </div>
-        <a href="" class="img">
-            <img src="./static/uploads/cate4.jpg" alt=""/>
+        <a class="img" href="">
+            <img alt="" src="./static/uploads/cate4.jpg"/>
         </a>
-        <a href="" class="img">
-            <img src="./static/uploads/cate5.jpg" alt=""/>
+        <a class="img" href="">
+            <img alt="" src="./static/uploads/cate5.jpg"/>
         </a>
-        <a href="" class="img">
-            <img src="./static/uploads/cate6.jpg" alt=""/>
+        <a class="img" href="">
+            <img alt="" src="./static/uploads/cate6.jpg"/>
         </a>
     </div>
     <div class="books">
@@ -220,7 +220,7 @@
                 </div>
                 <div class="seckill-content">
 
-                    <a href="" class="tip">
+                    <a class="tip" href="">
                         <h5>距离结束还有</h5>
                         <i class="iconfont icon-shandian"></i>
                         <div class="downcount">
@@ -233,8 +233,8 @@
                     </a>
 
 
-                    <a href="" class="books-sec">
-                        <img src="./static/uploads/congwanqingdaominguo.jpg" alt="">
+                    <a class="books-sec" href="">
+                        <img alt="" src="./static/uploads/congwanqingdaominguo.jpg">
                         <p>从晚晴到民国</p>
                         <div>
                             <span class="cur-price">￥28.9</span>
@@ -242,8 +242,8 @@
                         </div>
                         <button>立即购买</button>
                     </a>
-                    <a href="" class="books-sec">
-                        <img src="./static/uploads/cyuyanrumenjingdian.jpg" alt="">
+                    <a class="books-sec" href="">
+                        <img alt="" src="./static/uploads/cyuyanrumenjingdian.jpg">
                         <p>c语言入门经典</p>
                         <div>
                             <span class="cur-price">￥55.9</span>
@@ -251,8 +251,8 @@
                         </div>
                         <button>立即购买</button>
                     </a>
-                    <a href="" class="books-sec">
-                        <img src="./static/uploads/fusang.jpg" alt="">
+                    <a class="books-sec" href="">
+                        <img alt="" src="./static/uploads/fusang.jpg">
                         <p>扶桑</p>
                         <div>
                             <span class="cur-price">￥30.9</span>
@@ -260,8 +260,8 @@
                         </div>
                         <button>立即购买</button>
                     </a>
-                    <a href="" class="books-sec">
-                        <img src="./static/uploads/geihaizideshi.jpg" alt="">
+                    <a class="books-sec" href="">
+                        <img alt="" src="./static/uploads/geihaizideshi.jpg">
                         <p>给孩子的诗</p>
                         <div>
                             <span class="cur-price">￥18.9</span>
@@ -282,19 +282,19 @@
                 <ul>
                     <li>
                         <a href="">
-                            <img src="./static/img/bottom1.png" alt="">
+                            <img alt="" src="./static/img/bottom1.png">
                             <span>大咖级讲师亲自授课</span>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="./static/img/bottom.png" alt="">
+                            <img alt="" src="./static/img/bottom.png">
                             <span>课程为学员成长持续赋能</span>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="./static/img/bottom2.png" alt="">
+                            <img alt="" src="./static/img/bottom2.png">
                             <span>学员真是情况大公开</span>
                         </a>
                     </li>

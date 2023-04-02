@@ -1,9 +1,9 @@
 package com.siwen.book.dao.impl;
 
 import com.siwen.book.dao.intf.UserDao;
+import com.siwen.book.pojo.User;
 import com.siwen.myssm.basedao.BaseDao;
 import org.thymeleaf.util.ListUtils;
-import com.siwen.book.pojo.User;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
 public class UserDaoImpl extends BaseDao<User> implements UserDao {
     @Override
     public User getUser(String uname, String pwd) {
-        List<User> userList = super.query("SELECT * FROM t_user WHERE uname = ? AND pwd = ?", uname ,pwd);
+        List<User> userList = super.query("SELECT * FROM t_user WHERE uname = ? AND pwd = ?", uname, pwd);
         return ListUtils.isEmpty(userList) ? null : userList.get(0);
     }
 }

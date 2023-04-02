@@ -8,8 +8,14 @@ import java.util.List;
 
 public interface CartItemService {
     void addCartItem(CartItem cartItem);
+
     void updateCartItem(CartItem cartItem);
+
     void addOrUpdateCartItem(CartItem cartItem, Cart cart);
+
     List<CartItem> getCartItemList(User userBean);
+
     Cart getCart(User userBean);
+
+    CartItem packCartItem(CartItem cartItem);
 }

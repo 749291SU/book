@@ -11,14 +11,15 @@ import java.util.List;
 @Setter
 @ToString
 public class OrderBean {
-    private Integer id ;
-    private String orderNo ;
+    private Integer id;
+    private String orderNo;
     private Date orderDate;
-    private User orderUser ;
-    private Double orderMoney ;
+    private User orderUser;
+    private Double orderMoney;
     private Integer orderStatus;
-    private List<OrderItem> orderItemList ;     //1:N
-    public OrderBean(Integer id){
-        this.id= id;
+    private List<OrderItem> orderItemList;     //1:N
+
+    public OrderBean(Integer id) {
+        this.id = id;
     }
 }

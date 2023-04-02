@@ -30,6 +30,7 @@
 
     <bean id="cartItemService" class="com.siwen.book.services.impl.CartItemServiceImpl">
         <property ref="cartItemDao" name="cartItemDao"></property>
+        <property ref="bookService" name="bookService"></property>
     </bean>
 
 

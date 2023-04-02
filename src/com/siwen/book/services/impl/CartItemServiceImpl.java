@@ -4,6 +4,7 @@ import com.siwen.book.dao.intf.CartItemDao;
 import com.siwen.book.pojo.Cart;
 import com.siwen.book.pojo.CartItem;
 import com.siwen.book.pojo.User;
+import com.siwen.book.services.intf.BookService;
 import com.siwen.book.services.intf.CartItemService;
 
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 public class CartItemServiceImpl implements CartItemService {
     private CartItemDao cartItemDao;
+    private BookService bookService;
 
     @Override
     public void addCartItem(CartItem cartItem) {
@@ -49,7 +51,11 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public List<CartItem> getCartItemList(User userBean) {
-        return cartItemDao.getCartItemList(userBean);
+        List<CartItem> cartItemList = cartItemDao.getCartItemList(userBean);
+        for (int i = 0; i < cartItemList.size(); i++) {
+            cartItemList.set(i, packCartItem(cartItemList.get(i)));
+        }
+        return cartItemList;
     }
 
     @Override
@@ -62,5 +68,11 @@ public class CartItemServiceImpl implements CartItemService {
         Cart cart = new Cart();
         cart.setCartItemMap(cartItemMap);
         return cart;
+    }
+
+    @Override
+    public CartItem packCartItem(CartItem cartItem) {
+        cartItem.setBook(bookService.getBook(cartItem.getBook().getId()));
+        return cartItem;
     }
 }

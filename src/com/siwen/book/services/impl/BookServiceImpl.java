@@ -8,8 +8,14 @@ import java.util.List;
 
 public class BookServiceImpl implements BookService {
     private BookDao bookDao;
+
     @Override
     public List<Book> getBookList() {
         return bookDao.getBookList();
+    }
+
+    @Override
+    public Book getBook(Integer bookId) {
+        return bookDao.getBook(bookId);
     }
 }

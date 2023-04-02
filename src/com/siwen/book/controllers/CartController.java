@@ -19,11 +19,17 @@ import javax.servlet.http.HttpSession;
 
 public class CartController {
     private CartItemService cartItemService;
+
+    public String index(HttpSession session) {
+        User user = (User) session.getAttribute("curUser");
+        user.setCart(cartItemService.getCart(user));
+        return "render:cart/cart";
+    }
+
     public String addCart(Integer bookId, HttpSession session) {
         User userBean = (User) session.getAttribute("curUser");
         CartItem cartItem = new CartItem(0, new Book(bookId), 1, userBean);
         cartItemService.addOrUpdateCartItem(cartItem, userBean.getCart());
-        userBean.setCart(cartItemService.getCart(userBean));
-        return "render:index";
+        return "redirect:cart.do";
     }
 }

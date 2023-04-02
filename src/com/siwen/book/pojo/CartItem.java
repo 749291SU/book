@@ -9,10 +9,11 @@ import lombok.*;
 @Setter
 @ToString
 public class CartItem {
-    private Integer id ;
-    private Book book ;
-    private Integer buyCount ;
-    private User userBean ;
+    private Integer id;
+    private Book book;
+    private Integer buyCount;
+    private User userBean;
+
     public CartItem(Integer id) {
         this.id = id;
     }
