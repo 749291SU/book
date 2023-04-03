@@ -11,4 +11,6 @@ public interface CartItemDao {
     void updateCartItem(CartItem cartItem);
 
     List<CartItem> getCartItemList(User userBean);
+
+    void deleteCartItem(CartItem cartItem);
 }

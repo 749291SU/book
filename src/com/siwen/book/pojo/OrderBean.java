@@ -17,7 +17,7 @@ public class OrderBean {
     private User orderUser;
     private Double orderMoney;
     private Integer orderStatus;
-    private List<OrderItem> orderItemList;     //1:N
+    private List<OrderItem> orderItemList;
 
     public OrderBean(Integer id) {
         this.id = id;

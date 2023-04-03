@@ -52,9 +52,7 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public List<CartItem> getCartItemList(User userBean) {
         List<CartItem> cartItemList = cartItemDao.getCartItemList(userBean);
-        for (int i = 0; i < cartItemList.size(); i++) {
-            cartItemList.set(i, packCartItem(cartItemList.get(i)));
-        }
+        cartItemList.replaceAll(this::packCartItem);
         return cartItemList;
     }
 
