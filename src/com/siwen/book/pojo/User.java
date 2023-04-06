@@ -2,6 +2,8 @@ package com.siwen.book.pojo;
 
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,6 +16,7 @@ public class User {
     private String email;
     private Integer role;
     private Cart cart;
+    private List<OrderBean> orderBeanList;
 
     public User(Integer id) {
         this.id = id;

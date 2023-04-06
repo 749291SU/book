@@ -43,4 +43,9 @@ public class OrderServiceImpl implements OrderService {
             cartItemDao.deleteCartItem(cartItem);
         }
     }
+
+    @Override
+    public List<OrderBean> getOrderBeanList(User user) {
+        return orderDao.getOrderBeanList(user);
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -43,34 +43,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>12354456895</td>
-                <td>
-                    2015.04.23
-                </td>
-                <td>90.00</td>
-                <td>88</td>
+            <tr th:each="orderBean : ${session.curUser.orderBeanList}" th:object="${orderBean}">
+                <td th:text="*{orderNo}"></td>
+                <td th:text="*{orderDate}"></td>
+                <td th:text="*{orderMoney}"></td>
+                <td th:text="*{totalBookCount}"></td>
                 <td><a class="send" href="">等待发货</a></td>
-                <td><a href="">查看详情</a></td>
-            </tr>
-            <tr>
-                <td>12354456895</td>
-                <td>
-                    2015.04.23
-                </td>
-                <td>90.00</td>
-                <td>88</td>
-                <td><a class="send" href="">未发货</a></td>
-                <td><a href="">查看详情</a></td>
-            </tr>
-            <tr>
-                <td>12354456895</td>
-                <td>
-                    2015.04.23
-                </td>
-                <td>90.00</td>
-                <td>88</td>
-                <td><a class="send" href="">已发货</a></td>
                 <td><a href="">查看详情</a></td>
             </tr>
             </tbody>
@@ -115,7 +93,7 @@
                 <li>
                     <a href="">
                         <img alt="" src="../../static/img/bottom2.png"/>
-                        <span>学员真是情况大公开</span>
+                        <span>学员真实情况大公开</span>
                     </a>
                 </li>
             </ul>
@@ -124,20 +102,14 @@
             <dl>
                 <dt>关于尚硅谷</dt>
                 <dd>教育理念</dd>
-                <!-- <dd>名师团队</dd>
-                <dd>学员心声</dd> -->
             </dl>
             <dl>
                 <dt>资源下载</dt>
                 <dd>视频下载</dd>
-                <!-- <dd>资料下载</dd>
-                <dd>工具下载</dd> -->
             </dl>
             <dl>
                 <dt>加入我们</dt>
                 <dd>招聘岗位</dd>
-                <!-- <dd>岗位介绍</dd>
-                <dd>招贤纳师</dd> -->
             </dl>
             <dl>
                 <dt>联系我们</dt>

@@ -4,7 +4,11 @@ import com.siwen.book.pojo.*;
 import com.siwen.book.services.intf.OrderService;
 
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * @projectName: JavaWeb
@@ -21,7 +25,7 @@ public class OrderController {
     public String checkout(HttpSession session) {
         OrderBean orderBean = new OrderBean();
         orderBean.setOrderNo(UUID.randomUUID().toString());
-        orderBean.setOrderDate(new Date());
+        orderBean.setOrderDate(LocalDateTime.now());
         User curUser = (User) session.getAttribute("curUser");
         orderBean.setOrderUser(curUser);
         orderBean.setOrderMoney(curUser.getCart().getTotalMoney());
@@ -35,5 +39,12 @@ public class OrderController {
         orderService.addOrderBean(orderBean);
         curUser.setCart(new Cart());
         return "render:index";
+    }
+
+    public String getOrderBeanList(HttpSession session) {
+        User curUser = (User) session.getAttribute("curUser");
+        List<OrderBean> orderBeanList = orderService.getOrderBeanList(curUser);
+        curUser.setOrderBeanList(orderBeanList);
+        return "render:order/order";
     }
 }
